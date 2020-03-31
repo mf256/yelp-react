@@ -7,13 +7,15 @@
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
     "test": "jest",
-    "lint": "eslint --cache --format codeframe --ext mjs,jsx,js src test"
+    "lint": "eslint --cache --format codeframe --ext mjs,jsx,js src test",
+    "lint:fix": "eslint --cache --format codeframe --ext mjs,jsx,js src test --fix"
   },
   "dependencies": {
     "prop-types": "^15",
     "react": "^16",
     "react-dom": "^16",
-    "react-hot-loader": "^4"
+    "react-hot-loader": "^4",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "@neutrinojs/airbnb": "^9.1.0",
