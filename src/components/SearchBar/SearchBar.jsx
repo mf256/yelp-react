@@ -1,6 +1,53 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import styled from 'styled-components';
 import './SearchBar.css';
+import { mainColor } from '../GlobalStyles/GlobalStyles';
+import img from './bg.jpg';
+
+const StyledSearchBar = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(${img});
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 30rem;
+`;
+
+const StyledButton = styled.div`
+    width: 15rem;
+    border-radius: 4px;
+    padding: 0.7rem 1.7rem;
+    background-color:${mainColor};
+    color: #ffffff;
+    font-weight: 600;
+    transition: background-color .5s;
+    text-align: center;
+    cursor: pointer;
+`;
+
+const StyledSmallButton = styled(StyledButton)`
+  width: 11rem;
+  padding: 0.5rem;
+`;
+
+const StyledInput = styled.input`
+  width: 22rem;
+  padding: .66rem 1rem;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  font-size: .77rem;
+  font-weight: 500;
+`;
+
+const StyledFlexRow = styled.div`
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+`;
 
 const sortByOptions = {
   'Best Match': 'best_match',
@@ -53,34 +100,32 @@ class SearchBar extends React.Component {
 
   renderSortByOptions() {
     return Object.keys(sortByOptions).map((item) => (
-      <li key={sortByOptions[item]} className={this.getSortByClass(sortByOptions[item])}>
-        <a
-          href={`#${sortByOptions[item]}`}
-          onClick={this.handleSortByChange.bind(this, sortByOptions[item])}
-          onKeyPress={this.handleSortByChange.bind(this, sortByOptions[item])}
-        >
-          {item}
-        </a>
-      </li>
+      <StyledSmallButton
+        key={sortByOptions[item]}
+        onClick={this.handleSortByChange.bind(this, sortByOptions[item])}
+        onKeyPress={this.handleSortByChange.bind(this, sortByOptions[item])}
+      >
+        {item}
+      </StyledSmallButton>
     ));
   }
 
   render() {
     return (
-      <div className="SearchBar">
-        <div className="SearchBar-sort-options">
-          <ul>
-            {this.renderSortByOptions()}
-          </ul>
-        </div>
-        <div className="SearchBar-fields">
-          <input placeholder="Search Businesses" onChange={this.handleTermChange} />
-          <input placeholder="Where?" onChange={this.handleLocationChange} />
-        </div>
-        <div className="SearchBar-submit">
-          <a href="#go" onClick={this.handleSearch}>Let&apos;s Go</a>
-        </div>
-      </div>
+      <StyledSearchBar>
+        <StyledFlexRow>
+          {this.renderSortByOptions()}
+        </StyledFlexRow>
+        <StyledFlexRow>
+          <StyledInput placeholder="Search Businesses" onChange={this.handleTermChange} />
+          <StyledInput placeholder="Where?" onChange={this.handleLocationChange} />
+        </StyledFlexRow>
+        <StyledButton
+          onClick={this.handleSearch}
+        >
+          Search
+        </StyledButton>
+      </StyledSearchBar>
     );
   }
 }

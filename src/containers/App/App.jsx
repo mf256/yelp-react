@@ -1,10 +1,15 @@
 import React from 'react';
-import './AppReset.css';
-import './App.css';
+import styled from 'styled-components';
+import GlobalStyles from '../../components/GlobalStyles/GlobalStyles';
 import NavBar from '../../components/NavBar/NavBar';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import BusinessList from '../../components/BusinessList/BusinessList';
 import YelpApi from '../../utils/yelpApi';
+
+const StyledApp = styled.div`
+  max-width: 1260px;
+  margin: 0 auto;
+`;
 
 class App extends React.Component {
   state = {
@@ -17,7 +22,6 @@ class App extends React.Component {
   }
 
   searchYelp(term, location, sortBy) {
-    // console.log(`Searching Yelp with ${term}, ${location}, ${sortBy}`);
     YelpApi.search(term, location, sortBy).then((apiItems) => {
       this.setState({
         renderItems: apiItems,
@@ -28,11 +32,12 @@ class App extends React.Component {
   render() {
     const { renderItems } = this.state;
     return (
-      <div className="App">
+      <StyledApp>
+        <GlobalStyles />
         <NavBar />
         <SearchBar search={this.searchYelp} />
         <BusinessList businesses={renderItems} />
-      </div>
+      </StyledApp>
     );
   }
 }

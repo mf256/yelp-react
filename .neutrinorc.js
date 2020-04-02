@@ -7,7 +7,15 @@ module.exports = {
     root: __dirname,
   },
   use: [
-    airbnb(),
+    airbnb({
+      eslint: {
+        baseConfig: {
+          rules: {
+            'import/prefer-default-export': 'off',
+          },
+        },
+      },
+    }),
     react({
       html: {
         title: 'yelp-react'

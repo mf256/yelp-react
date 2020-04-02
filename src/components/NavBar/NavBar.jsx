@@ -1,14 +1,27 @@
 import React from 'react';
-import './NavBar.css';
+import styled from 'styled-components';
+import { mainColor } from '../GlobalStyles/GlobalStyles';
+
+const StyledNavBar = styled.div`
+  background-color: ${mainColor};
+  padding: 5px;
+  text-align: center;
+  width: 100%;
+`;
+
+const StyledHeading = styled.h1`
+  margin: 0;
+  color: #ffffff;
+`;
 
 class NavBar extends React.PureComponent {
   render() {
     return (
-      <div className="NavBar">
-        <h1>
-          Yelp React
-        </h1>
-      </div>
+      <StyledNavBar>
+        <StyledHeading>
+          Yelp in React
+        </StyledHeading>
+      </StyledNavBar>
     );
   }
 }
