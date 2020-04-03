@@ -1,7 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
-import './SearchBar.css';
 import { mainColor } from '../GlobalStyles/GlobalStyles';
 import img from './bg.jpg';
 
@@ -26,6 +25,7 @@ const StyledButton = styled.div`
     transition: background-color .5s;
     text-align: center;
     cursor: pointer;
+    margin: 5px;
 `;
 
 const StyledSmallButton = styled(StyledButton)`
@@ -40,6 +40,7 @@ const StyledInput = styled.input`
   border-radius: 4px;
   font-size: .77rem;
   font-weight: 500;
+  margin: 10px;
 `;
 
 const StyledFlexRow = styled.div`
@@ -47,6 +48,10 @@ const StyledFlexRow = styled.div`
     display: flex;
     justify-content: space-around;
     margin-bottom: 2rem;
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
 `;
 
 const sortByOptions = {
