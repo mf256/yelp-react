@@ -15,11 +15,12 @@ const StyledSearchBar = styled.div`
     height: 30rem;
 `;
 
-const StyledButton = styled.div`
+const StyledButton = styled.button`
     width: 15rem;
+    border: 0;
     border-radius: 4px;
     padding: 0.7rem 1.7rem;
-    background-color:${mainColor};
+    background-color: ${mainColor};
     color: #ffffff;
     font-weight: 600;
     transition: background-color .5s;
@@ -31,6 +32,10 @@ const StyledButton = styled.div`
 const StyledSmallButton = styled(StyledButton)`
   width: 11rem;
   padding: 0.5rem;
+  ${(props) => props.active && `
+    background-color: #ffffff;
+    color: ${mainColor};
+  `}
 `;
 
 const StyledInput = styled.input`
@@ -73,6 +78,7 @@ class SearchBar extends React.Component {
     this.handleTermChange = this.handleTermChange.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleEnter = this.handleEnter.bind(this);
   }
 
   getSortByClass(sortByOption) {
@@ -80,8 +86,9 @@ class SearchBar extends React.Component {
     return sortBy === sortByOption ? 'active' : '';
   }
 
-  handleSortByChange(sortByOption) {
-    this.setState({ sortBy: sortByOption });
+  handleSortByChange(event) {
+    const sortBy = event.target.dataset.sort;
+    this.setState({ sortBy });
   }
 
   handleTermChange(event) {
@@ -94,21 +101,27 @@ class SearchBar extends React.Component {
     this.setState({ location });
   }
 
-  handleSearch(event) {
+  handleSearch() {
     const {
       term, location, sortBy,
     } = this.state;
     const { search } = this.props;
     search(term, location, sortBy);
-    event.preventDefault();
+  }
+
+  handleEnter(event) {
+    if (event.key === 'Enter') {
+      this.handleSearch();
+    }
   }
 
   renderSortByOptions() {
     return Object.keys(sortByOptions).map((item) => (
       <StyledSmallButton
         key={sortByOptions[item]}
-        onClick={this.handleSortByChange.bind(this, sortByOptions[item])}
-        onKeyPress={this.handleSortByChange.bind(this, sortByOptions[item])}
+        data-sort={sortByOptions[item]}
+        onClick={this.handleSortByChange}
+        active={this.getSortByClass(sortByOptions[item])}
       >
         {item}
       </StyledSmallButton>
@@ -123,7 +136,7 @@ class SearchBar extends React.Component {
         </StyledFlexRow>
         <StyledFlexRow>
           <StyledInput placeholder="Search Businesses" onChange={this.handleTermChange} />
-          <StyledInput placeholder="Where?" onChange={this.handleLocationChange} />
+          <StyledInput placeholder="Where?" onChange={this.handleLocationChange} onKeyPress={this.handleEnter} />
         </StyledFlexRow>
         <StyledButton
           onClick={this.handleSearch}

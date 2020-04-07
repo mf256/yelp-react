@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
+import ApiError from '../../utils/ApiError';
+import BusinessList from '../../components/BusinessList/BusinessList';
 import GlobalStyles from '../../components/GlobalStyles/GlobalStyles';
+import Messages from '../../config/Messages';
 import NavBar from '../../components/NavBar/NavBar';
 import SearchBar from '../../components/SearchBar/SearchBar';
-import BusinessList from '../../components/BusinessList/BusinessList';
+import WithLoading from '../../components/WithLoading/WithLoading';
 import YelpApi from '../../utils/yelpApi';
 
 const StyledApp = styled.div`
@@ -13,6 +16,8 @@ const StyledApp = styled.div`
 
 class App extends React.Component {
   state = {
+    loading: false,
+    error: '',
     renderItems: [],
   };
 
@@ -22,21 +27,37 @@ class App extends React.Component {
   }
 
   searchYelp(term, location, sortBy) {
-    YelpApi.search(term, location, sortBy).then((apiItems) => {
-      this.setState({
-        renderItems: apiItems,
-      });
+    this.setState({
+      loading: true,
+      error: '',
     });
+    try {
+      YelpApi.search(term, location, sortBy).then((apiItems) => {
+        this.setState({
+          loading: false,
+          error: apiItems === null ? Messages.NO_DATA : '',
+          renderItems: apiItems,
+        });
+      });
+    } catch (err) {
+      if (err instanceof ApiError) {
+        this.setState({
+          loading: false,
+          error: err.message,
+        });
+      }
+    }
   }
 
   render() {
-    const { renderItems } = this.state;
+    const { renderItems, loading, error } = this.state;
+    const ListWithLoading = WithLoading(BusinessList);
     return (
       <StyledApp>
         <GlobalStyles />
         <NavBar />
         <SearchBar search={this.searchYelp} />
-        <BusinessList businesses={renderItems} />
+        <ListWithLoading businesses={renderItems} isLoading={loading} errorMsg={error} />
       </StyledApp>
     );
   }
