@@ -1,6 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
+import InfiniteScroll from 'react-infinite-scroller';
+import Loader from '../Loading/Loader';
 import Business, { businessType } from '../Business/Business';
 
 const StyledContainer = styled.div`
@@ -13,21 +15,33 @@ const StyledContainer = styled.div`
 
 class BusinessList extends React.PureComponent {
   render() {
-    const { businesses } = this.props;
+    const { businesses, loadMore, hasMore } = this.props;
+
     return (
-      <StyledContainer>
-        {businesses && businesses.map((b) => (<Business business={b} key={b.id} />))}
-      </StyledContainer>
+      <InfiniteScroll
+        pageStart={0}
+        loadMore={loadMore}
+        hasMore={hasMore}
+        loader={<Loader key={0} />}
+      >
+        <StyledContainer>
+          {businesses && businesses.map((b) => (<Business business={b} key={b.id} />))}
+        </StyledContainer>
+      </InfiniteScroll>
     );
   }
 }
 
 BusinessList.propTypes = {
   businesses: PropTypes.arrayOf(businessType),
+  loadMore: PropTypes.func,
+  hasMore: PropTypes.bool,
 };
 
 BusinessList.defaultProps = {
   businesses: [],
+  loadMore: () => {},
+  hasMore: true,
 };
 
 export default BusinessList;

@@ -88,7 +88,11 @@ class SearchBar extends React.Component {
 
   handleSortByChange(event) {
     const sortBy = event.target.dataset.sort;
+    const { term, location } = this.state;
     this.setState({ sortBy });
+    if (term && location) {
+      this.handleSearch();
+    }
   }
 
   handleTermChange(event) {

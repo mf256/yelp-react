@@ -2,8 +2,8 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
-import GridLoader from 'react-spinners/GridLoader';
 import { mainColor } from '../GlobalStyles/GlobalStyles';
+import Loader from './Loader';
 
 const StyledError = styled.div`
   font-size: 1rem;
@@ -14,11 +14,6 @@ const StyledError = styled.div`
   border-radius: 4px;
   padding: 0.7rem 1.7rem;
   width: 50%;
-`;
-
-const StyledLoader = styled.div`
-  margin: 4rem auto;
-  width: 57px;
 `;
 
 function WithLoading(Component) {
@@ -33,12 +28,7 @@ function WithLoading(Component) {
 
     if (isLoading) {
       return (
-        <StyledLoader>
-          <GridLoader
-            color={mainColor}
-            loading
-          />
-        </StyledLoader>
+        <Loader />
       );
     }
 
