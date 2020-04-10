@@ -64,5 +64,9 @@ for more commands refer `package.json`
 ## Status
 Project is finished.
 
+## Photos
+* [Source](https://unsplash.com)
+* [License](https://unsplash.com/license)
+
 ## License
 MIT
