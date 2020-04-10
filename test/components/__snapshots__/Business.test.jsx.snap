@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Business should match snapshot 1`] = `
+<styled.div
+  className="Business"
+>
+  <styled.figure>
+    <styled.img
+      alt="Test Name"
+      src="https://test.com/test.jpg"
+    />
+  </styled.figure>
+  <styled.h2>
+    Test Name
+  </styled.h2>
+  <styled.div>
+    <styled.div>
+      <styled.p>
+        1 Test Address
+      </styled.p>
+      <styled.p>
+        Test City
+      </styled.p>
+      <styled.p>
+        Test City
+         
+        10102
+      </styled.p>
+    </styled.div>
+    <styled.div>
+      <styled.p>
+        Test Category
+      </styled.p>
+      <styled.p>
+        4.5
+          stars
+      </styled.p>
+      <styled.p>
+        90
+          reviews
+      </styled.p>
+    </styled.div>
+  </styled.div>
+</styled.div>
+`;

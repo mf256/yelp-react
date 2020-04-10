@@ -7,10 +7,14 @@
     "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode production",
     "test": "jest",
+    "coverage": "npm test -- --coverage",
     "lint": "eslint --cache --format codeframe --ext mjs,jsx,js src test",
     "lint:fix": "eslint --cache --format codeframe --ext mjs,jsx,js src test --fix"
   },
   "dependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.4",
     "prop-types": "^15",
     "react": "^16",
     "react-dom": "^16",

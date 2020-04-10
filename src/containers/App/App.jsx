@@ -76,7 +76,7 @@ class App extends React.Component {
       items,
       meta: { error, total },
     } = this.state;
-    const hasMore = items.length <= total;
+    const hasMore = items.length < total;
     const ListWithLoading = WithLoading(BusinessList);
 
     return (

@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar should match snapshot 1`] = `
+<styled.div>
+  <styled.div>
+    <Styled(styled.button)
+      active="active"
+      data-sort="best_match"
+      key="best_match"
+      onClick={[Function]}
+    >
+      Best Match
+    </Styled(styled.button)>
+    <Styled(styled.button)
+      active=""
+      data-sort="rating"
+      key="rating"
+      onClick={[Function]}
+    >
+      Highest Rated
+    </Styled(styled.button)>
+    <Styled(styled.button)
+      active=""
+      data-sort="review_count"
+      key="review_count"
+      onClick={[Function]}
+    >
+      Most Reviewed
+    </Styled(styled.button)>
+  </styled.div>
+  <styled.div>
+    <styled.input
+      onChange={[Function]}
+      placeholder="Search Businesses"
+    />
+    <styled.input
+      onChange={[Function]}
+      onKeyPress={[Function]}
+      placeholder="Where?"
+    />
+  </styled.div>
+  <styled.button
+    onClick={[Function]}
+  >
+    Search
+  </styled.button>
+</styled.div>
+`;

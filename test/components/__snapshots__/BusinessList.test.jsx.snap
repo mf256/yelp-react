@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BusinessList should match snapshot 1`] = `
+<InfiniteScroll
+  element="div"
+  getScrollParent={null}
+  hasMore={true}
+  initialLoad={true}
+  isReverse={false}
+  loadMore={[Function]}
+  loader={<Loader />}
+  pageStart={0}
+  ref={null}
+  threshold={250}
+  useCapture={false}
+  useWindow={true}
+>
+  <styled.div />
+</InfiniteScroll>
+`;
+
+exports[`BusinessList should render items 1`] = `
+<InfiniteScroll
+  element="div"
+  getScrollParent={null}
+  hasMore={true}
+  initialLoad={true}
+  isReverse={false}
+  loadMore={[Function]}
+  loader={<Loader />}
+  pageStart={0}
+  ref={null}
+  threshold={250}
+  useCapture={false}
+  useWindow={true}
+>
+  <styled.div>
+    <Business
+      business={
+        Object {
+          "address": "1 Test Address",
+          "category": "Test Category",
+          "city": "Test City",
+          "id": 1,
+          "imageSrc": "https://test.com/test.jpg",
+          "name": "Test Name",
+          "rating": 4.5,
+          "reviewCount": 90,
+          "state": "Test State",
+          "zipCode": "10102",
+        }
+      }
+      key="1"
+    />
+  </styled.div>
+</InfiniteScroll>
+`;
+
+exports[`BusinessList should render last items 1`] = `
+<InfiniteScroll
+  element="div"
+  getScrollParent={null}
+  hasMore={false}
+  initialLoad={true}
+  isReverse={false}
+  loadMore={[Function]}
+  loader={<Loader />}
+  pageStart={0}
+  ref={null}
+  threshold={250}
+  useCapture={false}
+  useWindow={true}
+>
+  <styled.div>
+    <Business
+      business={
+        Object {
+          "address": "1 Test Address",
+          "category": "Test Category",
+          "city": "Test City",
+          "id": 1,
+          "imageSrc": "https://test.com/test.jpg",
+          "name": "Test Name",
+          "rating": 4.5,
+          "reviewCount": 90,
+          "state": "Test State",
+          "zipCode": "10102",
+        }
+      }
+      key="1"
+    />
+  </styled.div>
+</InfiniteScroll>
+`;

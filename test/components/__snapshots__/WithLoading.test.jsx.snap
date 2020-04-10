@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`WithLoading should match snapshot 1`] = `<Component />`;
+
+exports[`WithLoading should render error message 1`] = `
+<styled.div>
+  Error!
+</styled.div>
+`;
+
+exports[`WithLoading should render error message when loading 1`] = `
+<styled.div>
+  Error!
+</styled.div>
+`;
+
+exports[`WithLoading should render loader 1`] = `<Loader />`;
+
+exports[`WithLoading should render nested component 1`] = `<Test />`;

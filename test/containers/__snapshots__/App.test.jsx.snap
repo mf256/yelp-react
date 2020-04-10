@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match snapshot 1`] = `
+<styled.div>
+  <Memo(GlobalStyleComponent) />
+  <NavBar />
+  <SearchBar
+    search={[Function]}
+  />
+  <WihLoadingComponent
+    businesses={Array []}
+    hasMore={false}
+    isLoading={false}
+    loadMore={[Function]}
+  />
+</styled.div>
+`;

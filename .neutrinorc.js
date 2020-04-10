@@ -21,6 +21,9 @@ module.exports = {
         title: 'yelp-react'
       }
     }),
-    jest(),
+    jest({
+      setupTestFrameworkScriptFile: '<rootDir>/test-setup.js',
+      snapshotSerializers: ['enzyme-to-json/serializer'],
+    }),
   ],
 };
