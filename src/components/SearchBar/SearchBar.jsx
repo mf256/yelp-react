@@ -81,11 +81,6 @@ class SearchBar extends React.Component {
     this.handleEnter = this.handleEnter.bind(this);
   }
 
-  getSortByClass(sortByOption) {
-    const { sortBy } = this.state;
-    return sortBy === sortByOption ? 'active' : '';
-  }
-
   handleSortByChange(event) {
     const sortBy = event.target.dataset.sort;
     const { term, location } = this.state;
@@ -117,6 +112,11 @@ class SearchBar extends React.Component {
     if (event.key === 'Enter') {
       this.handleSearch();
     }
+  }
+
+  getSortByClass(sortByOption) {
+    const { sortBy } = this.state;
+    return sortBy === sortByOption ? 'active' : '';
   }
 
   renderSortByOptions() {
